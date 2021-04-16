@@ -35,6 +35,7 @@ pub enum NodeKind {
     WithStatement(WithStatement),
     ReturnStatement(ReturnStatement),
     LabeledStatement(LabeledStatement),
+    WhileStatement(WhileStatement),
     BreakStatement(BreakStatement),
     ContinueStatement(ContinueStatement),
     IfStatement(IfStatement),
@@ -175,6 +176,12 @@ pub struct FunctionDeclaration {
     pub captured_vars: Vec<VarLocId>,
     #[serde(skip)]
     pub direct_props: Option<(Box<[ir::VarType]>, ir::FuncIdx)>, // only set if this is a direct function, and it is set by post_parse().
+}
+
+#[derive(Deserialize, Debug)]
+pub struct WhileStatement {
+    pub cond: Box<Node>,
+    pub body: Box<Node>
 }
 
 #[derive(Deserialize, Debug)]
