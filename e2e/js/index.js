@@ -2,8 +2,13 @@ import Harness from './harness';
 
 const harness = new Harness;
 const code = `
-import {math_max} from "https://btzy.github.io/libsourceror/std/math.source";
-
-math_max(4, 2);
+function f(n) {
+    if (n !== 0) {
+        return 0;
+    } else {
+      return 1;
+    }
+}
+f(0);
 `;
 harness.runCode(code, 1);

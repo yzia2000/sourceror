@@ -295,6 +295,7 @@ pub fn encode_funcs<'a, Heap: HeapManager>(
                         expr_builder,
                     );
                 } else if wasm_reachable {
+                    expr_builder.i32_const(0);
                     expr_builder.unreachable();
                 }
                 // if !wasm_reachable then wasm knows that this point is unreachable, so we don't need to emit the `unreachable` instruction
